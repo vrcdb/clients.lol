@@ -242,26 +242,22 @@ th[data-column="os"] {
 }
 
 .detail-row td {
+  padding: 14px 8px;
   color: var(--fg);
   background: var(--surface);
   white-space: normal;
 }
 
 dl {
-  display: block;
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 48px;
 }
 
 dl div {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 12px;
-  padding: 6px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-dl div:last-child {
-  border-bottom: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
 
 dt {
@@ -271,7 +267,6 @@ dt {
 }
 
 dd {
-  margin-top: 2px;
   color: var(--fg);
   font-weight: 600;
   overflow-wrap: anywhere;
