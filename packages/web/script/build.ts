@@ -12,12 +12,12 @@ const clientsDir = path.join(import.meta.dirname, "..", "..", "..", "clients");
 const srcDir = path.join(import.meta.dirname, "..", "src");
 const jsonIndent = 2;
 const featureNames = [
-  ["movement", "Movement"],
-  ["esp", "ESP"],
-  ["teleports", "Teleports"],
-  ["vr", "VR"],
-  ["crashers", "Crashers"],
-  ["protections", "Protections"],
+  ["movement", "Movement", "MV"],
+  ["esp", "ESP", "ESP"],
+  ["teleports", "Teleports", "TP"],
+  ["vr", "VR", "VR"],
+  ["crashers", "Crashers", "CR"],
+  ["protections", "Protections", "PR"],
 ] as const;
 
 function escapeHtml(value: unknown): string {
@@ -27,10 +27,6 @@ function escapeHtml(value: unknown): string {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
-}
-
-function bool(value: unknown): string {
-  return value ? "Yes" : "No";
 }
 
 function option(value: string): string {
@@ -84,18 +80,24 @@ function renderRows(clients: Record<string, ClientData>): string {
       ]
         .join(" ")
         .toLowerCase();
-      let website = "-";
-      if (client.website) {
-        website = `<a href="${escapeHtml(client.website)}" target="_blank" rel="noopener noreferrer">${escapeHtml(client.website)}</a>`;
-      }
-      const featureRows = featureNames
+
+      const featureDots = featureNames
         .map(
           ([key, label]) =>
-            `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(bool(client.features[key]))}</dd></div>`,
+            `<td class="dot-cell${client.features[key] ? " dot-yes" : " dot-no"}" aria-label="${escapeHtml(label)}: ${client.features[key] ? "yes" : "no"}">${client.features[key] ? "●" : "○"}</td>`,
         )
         .join("");
 
-      return `<tr class="client-row" tabindex="0" aria-expanded="false" data-search="${escapeHtml(searchText)}" data-status="${escapeHtml(client.status)}" data-access="${escapeHtml(client.access)}" data-os="${escapeHtml(client.os)}" data-movement="${client.features.movement}" data-esp="${client.features.esp}" data-teleports="${client.features.teleports}" data-vr="${client.features.vr}" data-crashers="${client.features.crashers}" data-protections="${client.features.protections}"><td>${escapeHtml(client.name)}</td><td>${escapeHtml(client.type)}</td><td>${escapeHtml(client.os)}</td><td>${escapeHtml(client.status)}</td><td>${website}</td><td>${escapeHtml(client.access)}</td><td>${escapeHtml(client.staffQuality)}</td></tr><tr class="detail-row" hidden><td colspan="7"><div class="detail-panel"><dl>${featureRows}</dl></div></td></tr>`;
+      let websiteDisplay = "—";
+      if (client.website) {
+        websiteDisplay = `<a href="${escapeHtml(client.website)}" target="_blank" rel="noopener noreferrer">${escapeHtml(client.website)}</a>`;
+      }
+      const detailItems = [
+        `<div><dt>Website</dt><dd>${websiteDisplay}</dd></div>`,
+        `<div><dt>Staff quality</dt><dd>${escapeHtml(client.staffQuality)}</dd></div>`,
+      ].join("");
+
+      return `<tr class="client-row" tabindex="0" aria-expanded="false" data-search="${escapeHtml(searchText)}" data-status="${escapeHtml(client.status)}" data-access="${escapeHtml(client.access)}" data-os="${escapeHtml(client.os)}" data-movement="${client.features.movement}" data-esp="${client.features.esp}" data-teleports="${client.features.teleports}" data-vr="${client.features.vr}" data-crashers="${client.features.crashers}" data-protections="${client.features.protections}"><td>${escapeHtml(client.name)}</td><td class="status-${client.status.toLowerCase()}">${escapeHtml(client.status)}</td><td class="access">${escapeHtml(client.access)}</td>${featureDots}<td>${escapeHtml(client.type)}</td><td>${escapeHtml(client.os)}</td></tr><tr class="detail-row" hidden><td colspan="11"><div class="detail-panel"><dl>${detailItems}</dl></div></td></tr>`;
     })
     .join("");
 }
@@ -138,13 +140,12 @@ function renderPage(clients: Record<string, ClientData>, css: string, app: strin
 <table id="clients-table">
 <caption>VRChat client database. Click a row to show feature details.</caption>
 <thead><tr>
-<th class="sortable" data-column="name"><button type="button">Name <span class="sort-indicator"></span></button></th>
-<th class="sortable" data-column="type"><button type="button">Type <span class="sort-indicator"></span></button></th>
-<th class="sortable" data-column="os"><button type="button">OS <span class="sort-indicator"></span></button></th>
-<th class="sortable" data-column="status"><button type="button">Status <span class="sort-indicator"></span></button></th>
-<th class="sortable" data-column="website"><button type="button">Website <span class="sort-indicator"></span></button></th>
-<th class="sortable" data-column="access"><button type="button">Access <span class="sort-indicator"></span></button></th>
-<th class="sortable" data-column="staff-quality"><button type="button">Staff quality <span class="sort-indicator"></span></button></th>
+<th class="sortable" data-column="name" data-cell="0"><button type="button">Name <span class="sort-indicator"></span></button></th>
+<th class="sortable" data-column="status" data-cell="1"><button type="button">Status <span class="sort-indicator"></span></button></th>
+<th class="sortable" data-column="access" data-cell="2"><button type="button">Access <span class="sort-indicator"></span></button></th>
+${featureNames.map(([, , abbr]) => `<th class="feature-col">${abbr}</th>`).join("")}
+<th class="sortable" data-column="type" data-cell="9"><button type="button">Type <span class="sort-indicator"></span></button></th>
+<th class="sortable" data-column="os" data-cell="10"><button type="button">OS <span class="sort-indicator"></span></button></th>
 </tr></thead>
 <tbody>${renderRows(clients)}</tbody>
 </table>

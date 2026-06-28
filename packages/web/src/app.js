@@ -64,12 +64,10 @@ function getPairs() {
   }));
 }
 
-function getCellValue(row, column) {
-  const text = row.cells[column]?.textContent?.trim() || "";
-  if (text === "-") {
-    return "";
-  }
-  return text;
+function getCellValue(row, sortableIndex) {
+  const header = document.querySelectorAll("th.sortable")[sortableIndex];
+  const cellIndex = header ? parseInt(header.dataset.cell, 10) : sortableIndex;
+  return row.cells[cellIndex]?.textContent?.trim() || "";
 }
 
 function rowMatches(row, query) {

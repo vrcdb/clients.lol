@@ -120,7 +120,7 @@ label {
 
 table {
   width: 100%;
-  min-width: 980px;
+  min-width: 860px;
   border-collapse: collapse;
 }
 
@@ -164,8 +164,8 @@ th button {
 
 th[aria-sort="ascending"],
 th[aria-sort="descending"] {
-  color: var(--bg);
-  background: var(--fg);
+  color: var(--fg);
+  background: var(--line);
 }
 
 .sort-indicator {
@@ -177,6 +177,33 @@ td {
   color: var(--muted);
   background: var(--bg);
 }
+
+.status-active { color: var(--fg); }
+.status-inactive { color: var(--muted); }
+.status-discontinued { color: var(--dim); }
+.status-unknown { color: var(--muted); }
+
+.access { color: var(--muted); }
+
+th[data-column="name"],
+th[data-column="status"],
+th[data-column="access"],
+th[data-column="type"],
+th[data-column="os"] { width: 12ch; }
+
+.feature-col {
+  width: 4ch;
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.dot-cell {
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.dot-yes { color: var(--fg); }
+.dot-no { color: var(--dim); }
 
 .client-row {
   cursor: pointer;
