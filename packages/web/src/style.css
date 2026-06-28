@@ -178,18 +178,30 @@ td {
   background: var(--bg);
 }
 
-.status-active { color: var(--fg); }
-.status-inactive { color: var(--muted); }
-.status-discontinued { color: var(--dim); }
-.status-unknown { color: var(--muted); }
+.status-active {
+  color: var(--fg);
+}
+.status-inactive {
+  color: var(--muted);
+}
+.status-discontinued {
+  color: var(--dim);
+}
+.status-unknown {
+  color: var(--muted);
+}
 
-.access { color: var(--muted); }
+.access {
+  color: var(--muted);
+}
 
 th[data-column="name"],
 th[data-column="status"],
 th[data-column="access"],
 th[data-column="type"],
-th[data-column="os"] { width: 12ch; }
+th[data-column="os"] {
+  width: 12ch;
+}
 
 .feature-col {
   width: 4ch;
@@ -202,8 +214,12 @@ th[data-column="os"] { width: 12ch; }
   padding: 8px 4px;
 }
 
-.dot-yes { color: var(--fg); }
-.dot-no { color: var(--dim); }
+.dot-yes {
+  color: var(--fg);
+}
+.dot-no {
+  color: var(--dim);
+}
 
 .client-row {
   cursor: pointer;

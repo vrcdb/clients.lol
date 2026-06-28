@@ -19,18 +19,29 @@ bun run fmt:check    # oxfmt --check
 
 ## Architecture
 
-This is a static site that publishes a database of VRChat clients as HTML and a public JSON API.
+This is a static site that publishes a database of VRChat clients as HTML and a
+public JSON API.
 
 **Data → build → deploy pipeline:**
 
-1. `clients/*.toml` — one file per client; the filename (minus `.toml`) becomes the client ID.
-2. `packages/core/src/generate.ts` — reads every TOML with `Bun.Glob`, validates each against the Zod schema in `schema.ts`, and returns a sorted `Record<id, Client>`.
-3. `packages/web/script/build.ts` — calls `generate()`, inlines minified JS/CSS via `Bun.build`, and writes `dist/index.html`, `dist/404.html`, and `dist/api.json`.
-4. SST (`sst.config.ts`) deploys `dist/` to Cloudflare as a static site (`clients.lol` on the `master` stage).
+1. `clients/*.toml` — one file per client; the filename (minus `.toml`) becomes
+   the client ID.
+2. `packages/core/src/generate.ts` — reads every TOML with `Bun.Glob`, validates
+   each against the Zod schema in `schema.ts`, and returns a sorted
+   `Record<id, Client>`.
+3. `packages/web/script/build.ts` — calls `generate()`, inlines minified JS/CSS
+   via `Bun.build`, and writes `dist/index.html`, `dist/404.html`, and
+   `dist/api.json`.
+4. SST (`sst.config.ts`) deploys `dist/` to Cloudflare as a static site
+   (`clients.lol` on the `master` stage).
 
-`packages/core` is the only shared library; `packages/web` imports it as `@clients/core`.
+`packages/core` is the only shared library; `packages/web` imports it as
+`@clients/core`.
 
-The frontend (`packages/web/src/app.js`) is vanilla JS — no framework. Filtering, sorting, and row expansion are all handled client-side using `data-*` attributes baked into the HTML at build time. State is synced to URL query params.
+The frontend (`packages/web/src/app.js`) is vanilla JS — no framework.
+Filtering, sorting, and row expansion are all handled client-side using `data-*`
+attributes baked into the HTML at build time. State is synced to URL query
+params.
 
 ## Client database work
 

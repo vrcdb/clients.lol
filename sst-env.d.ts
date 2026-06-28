@@ -5,9 +5,8 @@
 /* biome-ignore-all lint: auto-generated */
 
 declare module "sst" {
-  export interface Resource {
-  }
+  export interface Resource {}
 }
 
-import "sst"
-export {}
+import "sst";
+export {};
