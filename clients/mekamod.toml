@@ -2,7 +2,6 @@ name = "MekaMod"
 os = "Windows & Linux"
 type = "MelonLoader"
 status = "Active"
-staffQuality = "Average"
 access = "Invite"
 website = "https://discord.gg/Qtt4G8cURs"
 

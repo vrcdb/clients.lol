@@ -75,7 +75,6 @@ function renderRows(clients: Record<string, ClientData>): string {
         client.status,
         client.website ?? "",
         client.access,
-        client.staffQuality,
         enabledFeatures.join(" "),
       ]
         .join(" ")
@@ -92,10 +91,7 @@ function renderRows(clients: Record<string, ClientData>): string {
       if (client.website) {
         websiteDisplay = `<a href="${escapeHtml(client.website)}" target="_blank" rel="noopener noreferrer">${escapeHtml(client.website)}</a>`;
       }
-      const detailItems = [
-        `<div><dt>Website</dt><dd>${websiteDisplay}</dd></div>`,
-        `<div><dt>Staff quality</dt><dd>${escapeHtml(client.staffQuality)}</dd></div>`,
-      ].join("");
+      const detailItems = [`<div><dt>Website</dt><dd>${websiteDisplay}</dd></div>`].join("");
 
       return `<tr class="client-row" tabindex="0" aria-expanded="false" data-search="${escapeHtml(searchText)}" data-status="${escapeHtml(client.status)}" data-access="${escapeHtml(client.access)}" data-os="${escapeHtml(client.os)}" data-movement="${client.features.movement}" data-esp="${client.features.esp}" data-teleports="${client.features.teleports}" data-vr="${client.features.vr}" data-crashers="${client.features.crashers}" data-protections="${client.features.protections}"><td>${escapeHtml(client.name)}</td><td class="status-${client.status.toLowerCase()}">${escapeHtml(client.status)}</td><td class="access">${escapeHtml(client.access)}</td>${featureDots}<td>${escapeHtml(client.type)}</td><td>${escapeHtml(client.os)}</td></tr><tr class="detail-row" hidden><td colspan="11"><div class="detail-panel"><dl>${detailItems}</dl></div></td></tr>`;
     })

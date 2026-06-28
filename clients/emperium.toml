@@ -2,7 +2,6 @@ name = "Emperium"
 os = "Linux"
 type = "BepInEx"
 status = "Inactive"
-staffQuality = "Good"
 access = "Free"
 website = "https://discord.gg/myuWgYP8WS"
 

@@ -33,7 +33,6 @@ name = "Example Client"
 os = "Windows"
 type = "Standalone"
 status = "Active"
-staffQuality = "Unknown"
 access = "Free"
 website = "https://example.com"
 
@@ -52,7 +51,6 @@ invite.
 ## Accepted values
 
 - `status`: `Active`, `Inactive`, `Discontinued`, `Unknown`
-- `staffQuality`: `Excellent`, `Good`, `Average`, `Poor`, `Unknown`
 - `access`: `Free`, `Invite`, `Paid`
 - feature values: `true` or `false`
 
@@ -79,8 +77,7 @@ may establish historical facts but cannot establish that a client is active.
 
 ## Data quality
 
-- Do not invent websites, dates, features, status, access, staff quality, OS, or
-  type.
+- Do not invent websites, dates, features, status, access, OS, or type.
 - Require direct evidence for every feature set to `true`.
 - Use `false` when a feature cannot be verified. Here, `false` means not
   verified; it does not prove the feature is unsupported.
@@ -108,19 +105,6 @@ verifies the client. Do not retain a dead link without replacement evidence.
 
 Invite-only clients are allowed when their identity and existence are
 verifiable. Leave unverified features `false`.
-
-## Staff quality
-
-Default to `Unknown`.
-
-- `Excellent`: require a long, independently supported history of exceptional
-  service.
-- `Good`: require an established positive support record.
-- `Average`: use for a mixed or limited support record.
-- `Poor`: require documented neglect, abuse, scams, or persistent unresolved
-  problems.
-
-Vendor-hosted ratings alone never justify a staff-quality rating.
 
 ## Updates and removals
 

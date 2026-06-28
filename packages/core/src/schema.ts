@@ -20,7 +20,6 @@ export const Client = z
     id: z.string(),
     name: z.string().min(nonEmpty),
     os: z.string().min(nonEmpty),
-    staffQuality: z.enum(["Excellent", "Good", "Average", "Poor", "Unknown"]),
     status: z.enum(["Active", "Inactive", "Discontinued", "Unknown"]),
     type: z.string().min(nonEmpty),
     website: z.string().url().optional(),

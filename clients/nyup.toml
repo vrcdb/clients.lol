@@ -2,7 +2,6 @@ name = "Nyup"
 os = "Windows"
 type = "Standalone"
 status = "Active"
-staffQuality = "Good"
 access = "Invite"
 website = "https://nyup.net"
 

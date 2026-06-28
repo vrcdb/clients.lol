@@ -2,7 +2,6 @@ name = "Vampware"
 os = "Windows"
 type = "Standalone"
 status = "Active"
-staffQuality = "Average"
 access = "Paid"
 
 [features]

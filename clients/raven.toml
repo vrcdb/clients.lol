@@ -2,7 +2,6 @@ name = "Raven"
 os = "Windows"
 type = "Standalone"
 status = "Inactive"
-staffQuality = "Average"
 access = "Free"
 
 [features]
