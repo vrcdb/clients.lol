@@ -1,9 +1,9 @@
-name = "Skill Issue"
+name = "TevvezCheats"
 os = "Windows"
 type = "BepInEx"
 status = "Active"
-access = "Paid"
-website = "https://skillissue.one/"
+access = "Free"
+website = "https://t.me/+Ba98xQhu8MIzMjBi"
 
 [features]
 movement = true
