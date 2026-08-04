@@ -184,9 +184,6 @@ td {
 .status-inactive {
   color: var(--muted);
 }
-.status-discontinued {
-  color: var(--dim);
-}
 .status-unknown {
   color: var(--muted);
 }

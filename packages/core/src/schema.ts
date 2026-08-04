@@ -20,7 +20,7 @@ export const Client = z
     id: z.string(),
     name: z.string().min(nonEmpty),
     os: z.string().min(nonEmpty),
-    status: z.enum(["Active", "Inactive", "Discontinued", "Unknown"]),
+    status: z.enum(["Active", "Inactive", "Unknown"]),
     type: z.string().min(nonEmpty),
     website: z.string().url().optional(),
   })

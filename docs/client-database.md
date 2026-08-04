@@ -50,7 +50,7 @@ invite.
 
 ## Accepted values
 
-- `status`: `Active`, `Inactive`, `Discontinued`, `Unknown`
+- `status`: `Active`, `Inactive`, `Unknown`
 - `access`: `Free`, `Invite`, `Paid`
 - feature values: `true` or `false`
 
@@ -90,7 +90,6 @@ may establish historical facts but cannot establish that a client is active.
 - `Active`: require a current release, working download or purchase path, or
   recent official maintenance evidence.
 - `Inactive`: the client exists but is no longer maintained or currently usable.
-- `Discontinued`: require explicit evidence that it ended permanently.
 - `Unknown`: use when evidence is missing or conflicts.
 
 A temporarily unreachable website is acceptable when another official source
@@ -109,8 +108,8 @@ verifiable. Leave unverified features `false`.
 ## Updates and removals
 
 Apply the same evidence standard to new entries and updates. Remove an entry
-only with evidence that the client was discontinued, fraudulent, renamed,
-duplicated, or otherwise no longer belongs in the database.
+only with evidence that it is fraudulent, renamed, duplicated, or otherwise no
+longer belongs in the database.
 
 ## Pull requests
 

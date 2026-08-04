@@ -1,7 +1,7 @@
 name = "Cat Client"
 os = "Linux"
 type = "BepInEx"
-status = "Discontinued"
+status = "Inactive"
 access = "Free"
 website = "https://discord.gg/V3GpuQDGJu"
 
